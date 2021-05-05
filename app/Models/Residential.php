@@ -15,4 +15,9 @@ class Residential extends Model
         return $this->belongsTo(User::class, 'foreign_key');
 
     }
+
+    public function images()
+    {
+        return $this->hasMany(Images::class);
+    }
 }

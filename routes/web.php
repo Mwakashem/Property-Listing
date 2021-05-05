@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ResidentialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 // Route::get('/','ResidentialsController@index');
-Route::get('/residentials/add', 'ResidentialsController@create');
-Route::post('/residentials', 'ResidentialsController@store');
+Route::get('/residentials/add', [ResidentialController::class, 'create']);
+Route::post('/residentials', [ResidentialController::class, 'store']);
 Route::get('/residentials/{id}', 'ResidentialsController@show');
 Route::delete('/residentials/{id}','ResidentialsController@destroy');
 

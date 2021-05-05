@@ -24,7 +24,7 @@ class ResidentialController extends Controller
      */
     public function create()
     {
-        //
+        return view("residentials.add");
     }
 
     /**
@@ -36,6 +36,40 @@ class ResidentialController extends Controller
     public function store(Request $request)
     {
         //
+        // dd($request);
+
+        $data = request()->validate([
+            'title'=>'required',
+            'street'=>'required',
+            'city'=>'required',
+            'bedrooms'=>'required',
+            'bathrooms'=>'required',
+            'type'=>'required',
+            'offer'=>'required',
+            'price'=>'required',
+            'description'=>'required',
+            'file-attachment.*'=>'',
+            // 'features.*'=>'required',
+        ]);
+        dd(request('file-attachment'));
+        $imagesPath = request('file-attachment[]')->store('uploads', 'public');
+
+        // auth()->user()->residentials()
+        $residential= Residentials::create([
+            'title'  => $data['title'],
+            'street'  => $data['street'],
+            'city'  => $data['city'],
+            'bedrooms'  => $data['bedrooms'],
+            'bathrooms'  => $data['bathrooms'],
+            'type'  => $data['type'],
+            'offer'  => $data['offer'],
+            'price'  => $data['price'],
+
+        ]);
+        $residential->images()->createMany($data['file-attachment']);
+        // $residential->images()->createMany($data['file-attachment']);
+
+        return redirect ('/');
     }
 
     /**
