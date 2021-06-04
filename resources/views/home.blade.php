@@ -31,7 +31,7 @@
         <nav class="navbar navbar-expand-lg">
           <!-- Logo -->
           <a class="navbar-brand" href="index.html" aria-label="Front">
-            <img src="assets/svg/logos/logo.svg" alt="Logo">
+            <img src="assets/logo-dark.png" alt="Logo">
           </a>
           <!-- End Logo -->
 
@@ -113,11 +113,11 @@
           <div class="col-md-8 mb-7 mb-md-0">
             <!-- Title -->
             <div class="w-md-75 mb-7">
-              <h1 class="display-4">Discover a place you'll
+              <h1 class="display-4">Discover a  new place 
                 <span class="text-primary text-highlight-warning">
                   <span class="js-text-animation"
                         data-hs-typed-options='{
-                          "strings": ["love to live", "enjoy living"],
+                          "strings": [" with Naibuni", "you will love to live"],
                           "typeSpeed": 90,
                           "loop": true,
                           "backSpeed": 30,
@@ -176,39 +176,43 @@
     <div class="container space-2 space-bottom-lg-3">
       <!-- Title -->
       <div class="w-md-80 w-lg-50 text-center mx-md-auto mb-7">
-        <h2>New properties on Front</h2>
+        <h2>New properties on Naibuni Properties</h2>
       </div>
       <!-- End Title -->
 
       <!-- Properties -->
       <div class="row mb-5">
+      @foreach($residential as $property)
         <div class="col-sm-6 col-lg-4 mb-3">
           <!-- Property Item -->
           <a class="card card-no-gutters h-100" href="property-description.html">
-            <img class="img-fluid rounded-lg" src="assets/img/480x320/img23.jpg" alt="Image Description">
-
+          @foreach($property->images as $image)
+            @if ($loop->first)
+            <img class="img-fluid rounded-lg" src="/storage/{{$image->imagename}}" alt="Image Description">
+            @endif
+          @endforeach
             <!-- Body -->
             <div class="card-body">
-              <span class="d-block font-size-1 text-body">For sale</span>
+              <span class="d-block font-size-1 text-body">For {{$property->offer}}</span>
 
               <div class="row align-items-center">
                 <div class="col">
-                  <h4 class="text-hover-primary">Borrett Close, London</h4>
+                  <h6 class="text-hover-primary">{{$property->title}}</h6>
                 </div>
                 <div class="col-auto">
-                  <h3 class="text-primary">&#163;689,000</h3>
+                  <h5 class="text-primary">Ksh.{{$property->price}}</h5>
                 </div>
               </div>
 
               <ul class="list-inline list-separator font-size-1 text-body">
                 <li class="list-inline-item">
-                  <i class="fas fa-bed text-muted mr-1"></i> 3 bed
+                  <i class="fas fa-bed text-muted mr-1"></i> {{$property->bedrooms}}
                 </li>
                 <li class="list-inline-item">
-                  <i class="fas fa-bath text-muted mr-1"></i> 2 bath
+                  <i class="fas fa-bath text-muted mr-1"></i> {{$property->bathrooms}}
                 </li>
                 <li class="list-inline-item">
-                  <i class="fas fa-ruler-combined text-muted mr-1"></i> 1,428 sqft
+                  <i class="fas fa-map-marker text-muted ml-1"></i> {{$property->street}}
                 </li>
               </ul>
             </div>
@@ -216,181 +220,7 @@
           </a>
           <!-- End Property Item -->
         </div>
-
-        <div class="col-sm-6 col-lg-4 mb-3">
-          <!-- Property Item -->
-          <a class="card card-no-gutters h-100" href="property-description.html">
-            <img class="img-fluid rounded-lg" src="assets/img/480x320/img19.jpg" alt="Image Description">
-
-            <!-- Body -->
-            <div class="card-body">
-              <span class="d-block font-size-1 text-body">For sale</span>
-
-              <div class="row align-items-center">
-                <div class="col">
-                  <h4 class="text-hover-primary">The Drive, Ilford</h4>
-                </div>
-                <div class="col-auto">
-                  <h3 class="text-primary">&#163;999,000</h3>
-                </div>
-              </div>
-
-              <ul class="list-inline list-separator font-size-1 text-body">
-                <li class="list-inline-item">
-                  <i class="fas fa-bed text-muted mr-1"></i> 2 bed
-                </li>
-                <li class="list-inline-item">
-                  <i class="fas fa-bath text-muted mr-1"></i> 1 bath
-                </li>
-                <li class="list-inline-item">
-                  <i class="fas fa-ruler-combined text-muted mr-1"></i> 2,123 sqft
-                </li>
-              </ul>
-            </div>
-            <!-- End Body -->
-          </a>
-          <!-- End Property Item -->
-        </div>
-
-        <div class="col-sm-6 col-lg-4 mb-3">
-          <!-- Property Item -->
-          <a class="card card-no-gutters h-100" href="property-description.html">
-            <img class="img-fluid rounded-lg" src="assets/img/480x320/img20.jpg" alt="Image Description">
-
-            <!-- Body -->
-            <div class="card-body">
-              <span class="d-block font-size-1 text-body">For sale</span>
-
-              <div class="row align-items-center">
-                <div class="col">
-                  <h4 class="text-hover-primary">Alderney House, Enfield</h4>
-                </div>
-                <div class="col-auto">
-                  <h3 class="text-primary">&#163;725,000</h3>
-                </div>
-              </div>
-
-              <ul class="list-inline list-separator font-size-1 text-body">
-                <li class="list-inline-item">
-                  <i class="fas fa-bed text-muted mr-1"></i> 1 bed
-                </li>
-                <li class="list-inline-item">
-                  <i class="fas fa-bath text-muted mr-1"></i> 1 bath
-                </li>
-                <li class="list-inline-item">
-                  <i class="fas fa-ruler-combined text-muted mr-1"></i> 1,791 sqft
-                </li>
-              </ul>
-            </div>
-            <!-- End Body -->
-          </a>
-          <!-- End Property Item -->
-        </div>
-
-        <div class="col-sm-6 col-lg-4 mb-3">
-          <!-- Property Item -->
-          <a class="card card-no-gutters h-100" href="property-description.html">
-            <img class="img-fluid rounded-lg" src="assets/img/480x320/img22.jpg" alt="Image Description">
-
-            <!-- Body -->
-            <div class="card-body">
-              <span class="d-block font-size-1 text-body">For rent</span>
-
-              <div class="row align-items-center">
-                <div class="col">
-                  <h4 class="text-hover-primary">Burns Way, Hounslow</h4>
-                </div>
-                <div class="col-auto">
-                  <h3 class="text-primary">&#163;2,500</h3>
-                </div>
-              </div>
-
-              <ul class="list-inline list-separator font-size-1 text-body">
-                <li class="list-inline-item">
-                  <i class="fas fa-bed text-muted mr-1"></i> 3 bed
-                </li>
-                <li class="list-inline-item">
-                  <i class="fas fa-bath text-muted mr-1"></i> 2 bath
-                </li>
-                <li class="list-inline-item">
-                  <i class="fas fa-ruler-combined text-muted mr-1"></i> 2,182 sqft
-                </li>
-              </ul>
-            </div>
-            <!-- End Body -->
-          </a>
-          <!-- End Property Item -->
-        </div>
-
-        <div class="col-sm-6 col-lg-4 mb-3">
-          <!-- Property Item -->
-          <a class="card card-no-gutters h-100" href="property-description.html">
-            <img class="img-fluid rounded-lg" src="assets/img/480x320/img21.jpg" alt="Image Description">
-
-            <!-- Body -->
-            <div class="card-body">
-              <span class="d-block font-size-1 text-body">For rent</span>
-
-              <div class="row align-items-center">
-                <div class="col">
-                  <h4 class="text-hover-primary">14 Oakridge, Dr Unit</h4>
-                </div>
-                <div class="col-auto">
-                  <h3 class="text-primary">&#163;999</h3>
-                </div>
-              </div>
-
-              <ul class="list-inline list-separator font-size-1 text-body">
-                <li class="list-inline-item">
-                  <i class="fas fa-bed text-muted mr-1"></i> 1 bed
-                </li>
-                <li class="list-inline-item">
-                  <i class="fas fa-bath text-muted mr-1"></i> 1 bath
-                </li>
-                <li class="list-inline-item">
-                  <i class="fas fa-ruler-combined text-muted mr-1"></i> 1,254 sqft
-                </li>
-              </ul>
-            </div>
-            <!-- End Body -->
-          </a>
-          <!-- End Property Item -->
-        </div>
-
-        <div class="col-sm-6 col-lg-4 mb-3">
-          <!-- Property Item -->
-          <a class="card card-no-gutters h-100" href="property-description.html">
-            <img class="img-fluid rounded-lg" src="assets/img/480x320/img24.jpg" alt="Image Description">
-
-            <!-- Body -->
-            <div class="card-body">
-              <span class="d-block font-size-1 text-body">For rent</span>
-
-              <div class="row align-items-center">
-                <div class="col">
-                  <h4 class="text-hover-primary">6 Milne Avenue, Matraville</h4>
-                </div>
-                <div class="col-auto">
-                  <h3 class="text-primary">&#163;1,257</h3>
-                </div>
-              </div>
-
-              <ul class="list-inline list-separator font-size-1 text-body">
-                <li class="list-inline-item">
-                  <i class="fas fa-bed text-muted mr-1"></i> 1 bed
-                </li>
-                <li class="list-inline-item">
-                  <i class="fas fa-bath text-muted mr-1"></i> 1 bath
-                </li>
-                <li class="list-inline-item">
-                  <i class="fas fa-ruler-combined text-muted mr-1"></i> 937 sqft
-                </li>
-              </ul>
-            </div>
-            <!-- End Body -->
-          </a>
-          <!-- End Property Item -->
-        </div>
+        @endforeach
       </div>
       <!-- End Properties -->
 

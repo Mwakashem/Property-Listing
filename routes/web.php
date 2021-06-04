@@ -14,15 +14,16 @@ use App\Http\Controllers\ResidentialController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
 // Route::get('/','ResidentialsController@index');
+Route::get('/', [ResidentialController::class, 'index']);
 Route::get('/residentials/add', [ResidentialController::class, 'create']);
 Route::post('/residentials', [ResidentialController::class, 'store']);
 Route::get('/residentials/{id}', 'ResidentialsController@show');

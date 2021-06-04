@@ -12,7 +12,7 @@ class Images extends Model
 
 
     public function residentials(){
-        return $this->belongsTo(Residential::class, 'foreign_key');
+        return $this->belongsTo(Residential::class);
 
     }
 }

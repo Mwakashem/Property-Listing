@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Residential;
+use App\Models\Images;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class ResidentialController extends Controller
 {
@@ -15,6 +17,8 @@ class ResidentialController extends Controller
     public function index()
     {
         //
+        $residential= Residential::latest()->get();
+        return view('home', compact('residential'));
     }
 
     /**
@@ -48,14 +52,10 @@ class ResidentialController extends Controller
             'offer'=>'required',
             'price'=>'required',
             'description'=>'required',
-            'file-attachment.*'=>'',
+            // 'file-attachment.*'=>'',
             // 'features.*'=>'required',
         ]);
-        dd(request('file-attachment'));
-        $imagesPath = request('file-attachment[]')->store('uploads', 'public');
-
-        // auth()->user()->residentials()
-        $residential= Residentials::create([
+        $residential= Residential::create([
             'title'  => $data['title'],
             'street'  => $data['street'],
             'city'  => $data['city'],
@@ -66,8 +66,25 @@ class ResidentialController extends Controller
             'price'  => $data['price'],
 
         ]);
-        $residential->images()->createMany($data['file-attachment']);
-        // $residential->images()->createMany($data['file-attachment']);
+
+        $photos = $request->file('file-attachment');
+            foreach ($photos as $image =>$images) {
+                    // dd($images);
+                
+                // dd($upload[$image]);
+                $upload[$image] = $images->store('uploads', 'public');
+                // dd($upload[$image]);
+                $uploadpath = Image::make(public_path("storage/{$upload[$image]}"))->fit(480,320);
+                $uploadpath ->save();
+                // dd($uploadpath);
+                $filepaths = ([
+                    'propertyid' =>$residential->id,
+                    'imagename'=> $upload[$image],
+                ]);
+                // $upload[$image] = Image::make($filepaths)->fit(480,320);
+                $imagessave = Images::create($filepaths);
+            }
+            
 
         return redirect ('/');
     }
@@ -80,7 +97,7 @@ class ResidentialController extends Controller
      */
     public function show(Residential $residential)
     {
-        //
+        
     }
 
     /**

@@ -111,7 +111,7 @@
         </div>
         <!-- End Title -->
 
-        <form class="js-validate" action="/residentials" method="post">
+        <form class="js-validate" action="/residentials" method="post" enctype="multipart/form-data">
             @csrf
           <!-- Listing Information -->
           <div class="mb-5">
@@ -179,11 +179,11 @@
                     </div>
                     <select class="custom-select" name="bedrooms" id="listingBedroom" aria-describedby="listingBedroomLabel">
                       <option selected>Choose amount</option>
-                      <option value="parkingSpacesSelect1">1</option>
-                      <option value="parkingSpacesSelect2">2</option>
-                      <option value="parkingSpacesSelect3">3</option>
-                      <option value="parkingSpacesSelect4">4</option>
-                      <option value="parkingSpacesSelect5plus">5+</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5+</option>
                     </select>
                   </div>
                 </div>
@@ -202,11 +202,11 @@
                     </div>
                     <select class="custom-select" name="bathrooms" id="listingBathrooms" aria-describedby="listingBathroomsLabel">
                       <option selected>Choose amount</option>
-                      <option value="bathroomsSelect1">1</option>
-                      <option value="bathroomsSelect2">2</option>
-                      <option value="bathroomsSelect3">3</option>
-                      <option value="bathroomsSelect4">4</option>
-                      <option value="bathroomsSelect5plus">5+</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5+</option>
                     </select>
                   </div>
                 </div>
@@ -227,9 +227,9 @@
                     </div>
                     <select class="custom-select" name="type" id="listingKitchen" aria-describedby="listingKitchenLabel">
                       <option selected>Choose amount</option>
-                      <option value="kitchenSelect1">Bungalow</option>
-                      <option value="kitchenSelect2">Flats</option>
-                      <option value="kitchenSelect3">Family Home</option>
+                      <option value="Bungalow">Bungalow</option>
+                      <option value="Flats">Flats</option>
+                      <option value="Family Home">Family Home</option>
                     </select>
                   </div>
                 </div>
